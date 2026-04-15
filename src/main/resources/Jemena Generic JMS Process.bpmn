@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:ns1="modeler" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:ns0="xmlns" id="bpmn_copilot_Definition_id" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Web Modeler" exporterVersion="6fa43d2" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.8.0" ns0:modeler="http://camunda.org/schema/modeler/1.0" ns1:executionPlatform="Camunda Cloud" ns1:executionPlatformVersion="8.6">
+  <bpmn:message id="Message_JMSReceived" name="JMSMessageReceived" />
+  <bpmn:process id="jemena-generic-jms-process" name="Jemena Generic JMS Process" processType="None" isClosed="false" isExecutable="true">
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="StartEvent_JMSReceived" targetRef="Activity_0i0xo3k" />
+    <bpmn:endEvent id="EndEvent_ProcessFinished" name="Process Finished">
+      <bpmn:incoming>Flow_2</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="Task_SendJMSResponse" targetRef="EndEvent_ProcessFinished" />
+    <bpmn:startEvent id="StartEvent_JMSReceived" name="JMS Message Received">
+      <bpmn:outgoing>Flow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sendTask id="Task_SendJMSResponse" name="Send Transaction ACK to JMS" implementation="##WebService">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="msg-send-ack" />
+        <zeebe:ioMapping>
+          <zeebe:input source="=transactionId" target="transactionId" />
+          <zeebe:input source="=sourceSystem" target="sourceSystem" />
+          <zeebe:input source="=targetSystem" target="targetSystem" />
+          <zeebe:input source="=&#34;Acknowledged&#34;" target="transactionStatus" />
+          <zeebe:input source="=&#34;No&#34;" target="duplicate" />
+          <zeebe:input source="=&#34;jemena-outbound-listener&#34;" target="destinationQueue" />
+        </zeebe:ioMapping>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0r63mmc</bpmn:incoming>
+      <bpmn:outgoing>Flow_2</bpmn:outgoing>
+    </bpmn:sendTask>
+    <bpmn:sequenceFlow id="Flow_0r63mmc" sourceRef="Activity_0i0xo3k" targetRef="Task_SendJMSResponse" />
+    <bpmn:userTask id="Activity_0i0xo3k" name="Validate Transaction">
+      <bpmn:extensionElements>
+        <zeebe:userTask />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1</bpmn:incoming>
+      <bpmn:outgoing>Flow_0r63mmc</bpmn:outgoing>
+    </bpmn:userTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_Process_JMS_Request_Response">
+    <bpmndi:BPMNPlane id="BPMNPlane_Process_JMS_Request_Response" bpmnElement="jemena-generic-jms-process">
+      <bpmndi:BPMNShape id="EndEvent_ProcessFinished_di" bpmnElement="EndEvent_ProcessFinished">
+        <dc:Bounds x="647" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="623" y="138" width="85" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_03hl3sx_di" bpmnElement="StartEvent_JMSReceived">
+        <dc:Bounds x="177" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="160" y="138" width="70" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1nv8g6h_di" bpmnElement="Task_SendJMSResponse">
+        <dc:Bounds x="465" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1u4xg6u_di" bpmnElement="Activity_0i0xo3k">
+        <dc:Bounds x="290" y="80" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
+        <di:waypoint x="565" y="120" />
+        <di:waypoint x="647" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
+        <di:waypoint x="213" y="120" />
+        <di:waypoint x="290" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0r63mmc_di" bpmnElement="Flow_0r63mmc">
+        <di:waypoint x="390" y="120" />
+        <di:waypoint x="465" y="120" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
