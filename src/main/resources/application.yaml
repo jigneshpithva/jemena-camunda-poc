@@ -1,0 +1,44 @@
+# https://docs.camunda.io/docs/apis-tools/spring-zeebe-sdk/getting-started/
+# https://docs.camunda.io/docs/apis-tools/spring-zeebe-sdk/configuration/
+
+spring:
+  application:
+    name: jemena-poc
+  jms:
+    pub-sub-domain: false
+    listener:
+      acknowledge-mode: auto
+      concurrency: 3-10
+
+# Broker configuration (explicit, not legacy activemq.*)
+broker:
+  url: ${BROKER_URL}
+  username: ${BROKER_USERNAME}
+  password: ${BROKER_PASSWORD}
+
+jemena:
+  msi:
+    process:
+      id: ${PROCESS_ID:jemena-generic-jms-process}
+  jms:
+    queues:
+      inbound: ${INBOUND_QUEUE:jemena-inbound-listener}
+      outbound: ${OUTBOUND_QUEUE:jemena-outbound-listener}
+
+camunda:
+  client:
+    mode: ${CAMUNDA_MODE:saas}
+    auth:
+      client-id: ${CAMUNDA_CLIENT_ID}
+      client-secret: ${CAMUNDA_CLIENT_SECRET}
+      oauth-url: ${CAMUNDA_OAUTH_URL:https://login.cloud.camunda.io/oauth/token}
+      audience: ${CAMUNDA_AUDIENCE:zeebe.camunda.io}
+      method: ${CAMUNDA_AUTH_METHOD:}
+      username: ${CAMUNDA_USERNAME:}
+      password: ${CAMUNDA_PASSWORD:}
+    cloud:
+      cluster-id: ${CAMUNDA_CLUSTER_ID}
+      region: ${CAMUNDA_REGION:syd-1}
+    zeebe:
+      gateway-address: ${ZEEBE_GRPC_ADDRESS}
+      rest-address: ${ZEEBE_REST_ADDRESS:}

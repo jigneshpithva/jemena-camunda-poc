@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<ns1:MarketSystemMessage xmlns:ns1="http://smartnet">
+    <ns1:Envelope market="NEM">
+        <To>SOLARISP</To>
+        <From>CONTACTA</From>
+    </ns1:Envelope>
+    <ns1:Message messageId="MSG-485018254" messageFileCreationTimeStamp="2025-10-23T12:58:20.858+10:00">
+        <ns1:TransactionGroup>SORD</ns1:TransactionGroup>
+    </ns1:Message>
+    <ns1:Transaction messagePriority="Medium" esbTransactionId="6a02d8f7-1608-481e-a691-8e916cfcfb63" applicationTransactionId="b01b76c0-a7a1-4530-a3ff-0d1aec702fb5" marketTransactionId="SOR-160320275" transactionType="ServiceOrderRequest" transactionSubType="Metering Service Works" deliveryPriority="Medium" sourceSystem="Gateway" targetSystem="AMI">
+        <TransactionData>
+            <Transaction transactionID="SOR-160320275" transactionDate="2025-10-23T12:54:36+10:00">
+                <ServiceOrderRequest actionType="New">
+                    <ServiceOrder>
+                        <NMI checksum="7">6001662439</NMI>
+                        <ServiceOrderType>
+                            <WorkType workSubType="Install Meter">Metering Service Works</WorkType>
+                        </ServiceOrderType>
+                        <ServiceOrderNumber>1603275</ServiceOrderNumber>
+                    </ServiceOrder>
+                    <ServicePoint>
+                        <AccessDetails>NO ACCESS ISSUES</AccessDetails>
+                        <Hazard>
+                            <Description>N</Description>
+                        </Hazard>
+                    </ServicePoint>
+                    <CustomerDetail>
+                        <PersonName nameType="LGL">
+                            <NameTitle>Ms</NameTitle>
+                            <GivenName>Random</GivenName>
+                            <FamilyName>Name</FamilyName>
+                        </PersonName>
+                        <PhoneNumber serviceType="Mobile Voice">
+                            <Prefix>0499</Prefix>
+                            <Number>999999</Number>
+                        </PhoneNumber>
+                    </CustomerDetail>
+                    <AppointmentDetail>
+                        <ScheduledDate>2025-10-24</ScheduledDate>
+                    </AppointmentDetail>
+                    <RequestData>
+                        <SpecialInstructions>
+                            <CommentLine>CONFIG REQUIRED: A210. P1012928805 PLEASE INSTALL METER</CommentLine>
+                        </SpecialInstructions>
+                        <NMIStandingData>
+                            <MeterRegister>
+                                <Meter>
+                                    <InstallationTypeCode>MRIM</InstallationTypeCode>
+                                    <RegisterConfiguration>
+                                        <Register>
+                                            <NetworkTariffCode>A210</NetworkTariffCode>
+                                        </Register>
+                                    </RegisterConfiguration>
+                                </Meter>
+                            </MeterRegister>
+                        </NMIStandingData>
+                        <CustomerConsultationRequired>false</CustomerConsultationRequired>
+                        <SupplyPhase>1-phase</SupplyPhase>
+                        <AverageDailyLoad>15</AverageDailyLoad>
+                        <CustomerType>Commercial</CustomerType>
+                        <MeteringType>Tou</MeteringType>
+                        <OffPeakRequirements>
+                            <CommentLine>N</CommentLine>
+                        </OffPeakRequirements>
+                        <MaximumDemand>25</MaximumDemand>
+                        <ServiceTime>Business Hours</ServiceTime>
+                        <SwitchingServiceRequired>false</SwitchingServiceRequired>
+                        <License>
+                            <Licensee nameType="LGL">
+                                <NameTitle>Mr</NameTitle>
+                                <GivenName>Random</GivenName>
+                                <FamilyName>Name</FamilyName>
+                            </Licensee>
+                            <BusinessName>ELECTRICAL</BusinessName>
+                            <PhoneNumber serviceType="Mobile Voice">
+                                <Prefix>0499</Prefix>
+                                <Number>999999</Number>
+                            </PhoneNumber>
+                            <LicenseNumber>99999</LicenseNumber>
+                            <SafetyCertificate>
+                                <ID>P9999999999</ID>
+                                <MethodSent>Online</MethodSent>
+                            </SafetyCertificate>
+                            <AttendanceRequired>false</AttendanceRequired>
+                        </License>
+                        <LifeSupport>No</LifeSupport>
+                        <Co-ordinationRequired>No</Co-ordinationRequired>
+                    </RequestData>
+                </ServiceOrderRequest>
+            </Transaction>
+        </TransactionData>
+    </ns1:Transaction>
+</ns1:MarketSystemMessage>

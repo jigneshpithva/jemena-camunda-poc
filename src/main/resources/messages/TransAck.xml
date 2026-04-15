@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns1:MarketSystemMessage xmlns:ns1="http://smartnet" xmlns:ns3="urn:cimXML:r1">
+    <ns1:Envelope market="NEM">
+        <To>CONTACTA</To>
+        <From>SOLARISP</From>
+    </ns1:Envelope>
+    <ns1:Message messageId="MSG-485018254" contentType="aseXML" messageFileCreationTimeStamp="2025-10-24T13:21:55.179+11:00">
+        <ns1:TransactionGroup exchange="TranAck">SORD</ns1:TransactionGroup>
+    </ns1:Message>
+    <ns1:Transaction messagePriority="Medium" esbTransactionId="6a02d8f7-1608-481e-a691-8e916cfcfb63" applicationTransactionId="b01b76c0-a7a1-4530-a3ff-0d1aec702fb5" marketInitiatingTransactionId="LSR_9448256594" transactionType="ServiceOrderRequest" deliveryPriority="Medium">
+        <TransactionData xsi:type="ns3:cimEnvelope" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <Header/>
+            <Acknowledgement>
+                <TransactionAcknowledgement initiatingTransactionID="LSR_9448256594" receiptID="MSA_7VGc6T1XLLm8jDFomm5N7gfoaR4fobvz" receiptDate="2025-10-24T13:21:55+11:00" status="Accept" duplicate="No"/>
+            </Acknowledgement>
+        </TransactionData>
+    </ns1:Transaction>
+</ns1:MarketSystemMessage>
